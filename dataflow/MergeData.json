@@ -1,0 +1,20 @@
+{
+	"name": "MergeData",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Json1",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [],
+			"transformations": [],
+			"script": "source(output(\n\t\tid as string,\n\t\tcreatedDateTime as string,\n\t\tlastModifiedDateTime as string,\n\t\tchangeKey as string,\n\t\tcategories as string[],\n\t\treceivedDateTime as string,\n\t\tsentDateTime as string,\n\t\thasAttachments as boolean,\n\t\tinternetMessageId as string,\n\t\tsubject as string,\n\t\tbodyPreview as string,\n\t\timportance as string,\n\t\tparentFolderId as string,\n\t\tconversationId as string,\n\t\tconversationIndex as string,\n\t\tisDeliveryReceiptRequested as string,\n\t\tisReadReceiptRequested as boolean,\n\t\tisRead as boolean,\n\t\tisDraft as boolean,\n\t\twebLink as string,\n\t\tinferenceClassification as string,\n\t\tinternetMessageHeaders as (name as string, value as string)[],\n\t\tbody as (contentType as string, content as string),\n\t\tsender as (emailAddress as (name as string, address as string)),\n\t\tfrom as (emailAddress as (name as string, address as string)),\n\t\ttoRecipients as (emailAddress as (name as string, address as string))[],\n\t\tccRecipients as string[],\n\t\tbccRecipients as string[],\n\t\treplyTo as string[],\n\t\tuniqueBody as (contentType as string, content as string),\n\t\tflag as (flagStatus as string),\n\t\tattachments as (id as string, lastModifiedDateTime as string, name as string, contentType as string, size as string, isInline as boolean, contentId as string, contentLocation as string, contentBytes as string, ODataType as string)[],\n\t\tODataType as string,\n\t\tpuser as string,\n\t\tptenant as string,\n\t\tpAdditionalInfo as string,\n\t\tdatarow as string,\n\t\tuserrow as string,\n\t\tpagerow as string,\n\t\trowinformation as (errorInformation as string, userReturnedNoData as boolean, isUserSummaryRow as boolean, userHasCompleteData as boolean)\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tdocumentForm: 'documentPerLine') ~> source1"
+		}
+	}
+}

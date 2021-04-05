@@ -1,0 +1,265 @@
+{
+	"name": "Json1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "mgdc"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string"
+				},
+				"createdDateTime": {
+					"type": "string"
+				},
+				"lastModifiedDateTime": {
+					"type": "string"
+				},
+				"changeKey": {
+					"type": "string"
+				},
+				"categories": {
+					"type": "array"
+				},
+				"receivedDateTime": {
+					"type": "string"
+				},
+				"sentDateTime": {
+					"type": "string"
+				},
+				"hasAttachments": {
+					"type": "boolean"
+				},
+				"internetMessageId": {
+					"type": "string"
+				},
+				"subject": {
+					"type": "string"
+				},
+				"bodyPreview": {
+					"type": "string"
+				},
+				"importance": {
+					"type": "string"
+				},
+				"parentFolderId": {
+					"type": "string"
+				},
+				"conversationId": {
+					"type": "string"
+				},
+				"conversationIndex": {
+					"type": "string"
+				},
+				"isDeliveryReceiptRequested": {
+					"type": "null"
+				},
+				"isReadReceiptRequested": {
+					"type": "boolean"
+				},
+				"isRead": {
+					"type": "boolean"
+				},
+				"isDraft": {
+					"type": "boolean"
+				},
+				"webLink": {
+					"type": "string"
+				},
+				"inferenceClassification": {
+					"type": "string"
+				},
+				"internetMessageHeaders": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"value": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"body": {
+					"type": "object",
+					"properties": {
+						"contentType": {
+							"type": "string"
+						},
+						"content": {
+							"type": "string"
+						}
+					}
+				},
+				"sender": {
+					"type": "object",
+					"properties": {
+						"emailAddress": {
+							"type": "object",
+							"properties": {
+								"name": {
+									"type": "string"
+								},
+								"address": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				},
+				"from": {
+					"type": "object",
+					"properties": {
+						"emailAddress": {
+							"type": "object",
+							"properties": {
+								"name": {
+									"type": "string"
+								},
+								"address": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				},
+				"toRecipients": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"emailAddress": {
+								"type": "object",
+								"properties": {
+									"name": {
+										"type": "string"
+									},
+									"address": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				},
+				"ccRecipients": {
+					"type": "array"
+				},
+				"bccRecipients": {
+					"type": "array"
+				},
+				"replyTo": {
+					"type": "array"
+				},
+				"uniqueBody": {
+					"type": "object",
+					"properties": {
+						"contentType": {
+							"type": "string"
+						},
+						"content": {
+							"type": "string"
+						}
+					}
+				},
+				"flag": {
+					"type": "object",
+					"properties": {
+						"flagStatus": {
+							"type": "string"
+						}
+					}
+				},
+				"attachments": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"id": {
+								"type": "string"
+							},
+							"lastModifiedDateTime": {
+								"type": "string"
+							},
+							"name": {
+								"type": "string"
+							},
+							"contentType": {
+								"type": "string"
+							},
+							"size": {
+								"type": "integer"
+							},
+							"isInline": {
+								"type": "boolean"
+							},
+							"contentId": {
+								"type": "string"
+							},
+							"contentLocation": {
+								"type": "null"
+							},
+							"contentBytes": {
+								"type": "string"
+							},
+							"ODataType": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"ODataType": {
+					"type": "string"
+				},
+				"puser": {
+					"type": "string"
+				},
+				"ptenant": {
+					"type": "string"
+				},
+				"pAdditionalInfo": {
+					"type": "null"
+				},
+				"datarow": {
+					"type": "integer"
+				},
+				"userrow": {
+					"type": "integer"
+				},
+				"pagerow": {
+					"type": "integer"
+				},
+				"rowinformation": {
+					"type": "object",
+					"properties": {
+						"errorInformation": {
+							"type": "null"
+						},
+						"userReturnedNoData": {
+							"type": "boolean"
+						},
+						"isUserSummaryRow": {
+							"type": "boolean"
+						},
+						"userHasCompleteData": {
+							"type": "boolean"
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -140,6 +140,221 @@
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "Download Users",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "Office365Source",
+						"userScopeFilterUri": "",
+						"outputColumns": [
+							{
+								"name": "aboutMe"
+							},
+							{
+								"name": "accountEnabled"
+							},
+							{
+								"name": "ageGroup"
+							},
+							{
+								"name": "assignedLicenses"
+							},
+							{
+								"name": "assignedPlans"
+							},
+							{
+								"name": "birthday"
+							},
+							{
+								"name": "businessPhones"
+							},
+							{
+								"name": "city"
+							},
+							{
+								"name": "companyName"
+							},
+							{
+								"name": "consentProvidedForMinor"
+							},
+							{
+								"name": "country"
+							},
+							{
+								"name": "createdDateTime"
+							},
+							{
+								"name": "department"
+							},
+							{
+								"name": "displayName"
+							},
+							{
+								"name": "givenName"
+							},
+							{
+								"name": "hireDate"
+							},
+							{
+								"name": "id"
+							},
+							{
+								"name": "imAddresses"
+							},
+							{
+								"name": "interests"
+							},
+							{
+								"name": "jobTitle"
+							},
+							{
+								"name": "legalAgeGroupClassification"
+							},
+							{
+								"name": "mail"
+							},
+							{
+								"name": "mailNickname"
+							},
+							{
+								"name": "mobilePhone"
+							},
+							{
+								"name": "mySite"
+							},
+							{
+								"name": "officeLocation"
+							},
+							{
+								"name": "onPremisesImmutableId"
+							},
+							{
+								"name": "onPremisesLastSyncDateTime"
+							},
+							{
+								"name": "onPremisesSecurityIdentifier"
+							},
+							{
+								"name": "onPremisesSyncEnabled"
+							},
+							{
+								"name": "passwordPolicies"
+							},
+							{
+								"name": "pastProjects"
+							},
+							{
+								"name": "postalCode"
+							},
+							{
+								"name": "preferredLanguage"
+							},
+							{
+								"name": "preferredName"
+							},
+							{
+								"name": "provisionedPlans"
+							},
+							{
+								"name": "proxyAddresses"
+							},
+							{
+								"name": "responsibilities"
+							},
+							{
+								"name": "schools"
+							},
+							{
+								"name": "skills"
+							},
+							{
+								"name": "state"
+							},
+							{
+								"name": "streetAddress"
+							},
+							{
+								"name": "surname"
+							},
+							{
+								"name": "usageLocation"
+							},
+							{
+								"name": "userPrincipalName"
+							},
+							{
+								"name": "userType"
+							}
+						]
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "Office365Users",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Binary1",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Data flow1",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [
+					{
+						"activity": "Download Messages",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "Download Users",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "MergeData",
+						"type": "DataFlowReference"
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
 			}
 		],
 		"annotations": []
