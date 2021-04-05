@@ -1,0 +1,112 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "NikADFTest"
+		},
+		"Office365_servicePrincipalKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalKey' of 'Office365'"
+		},
+		"AzureDataLakeStorage_servicePrincipalCredential": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalCredential' of 'AzureDataLakeStorage'"
+		},
+		"AzureBlobStorage_servicePrincipalKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalKey' of 'AzureBlobStorage'"
+		},
+		"Office365_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "36a5fe5a-c72a-40b1-87fb-08d8306d10dd"
+		},
+		"AzureDataLakeStorage_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://nikadfmgdc.dfs.core.windows.net"
+		},
+		"AzureDataLakeStorage_properties_typeProperties_tenant": {
+			"type": "string",
+			"defaultValue": "027d8585-9664-42ed-ae2a-c9e9fddfda22"
+		},
+		"AzureDataLakeStorage_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "36a5fe5a-c72a-40b1-87fb-08d8306d10dd"
+		},
+		"AzureBlobStorage_properties_typeProperties_serviceEndpoint": {
+			"type": "string",
+			"defaultValue": "https://nikadfmgdc.blob.core.windows.net"
+		},
+		"AzureBlobStorage_properties_typeProperties_tenant": {
+			"type": "string",
+			"defaultValue": "027d8585-9664-42ed-ae2a-c9e9fddfda22"
+		},
+		"AzureBlobStorage_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "36a5fe5a-c72a-40b1-87fb-08d8306d10dd"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "NikADFTest_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"Office365_servicePrincipalKey": {
+						"value": "[parameters('Office365_servicePrincipalKey')]"
+					},
+					"AzureDataLakeStorage_servicePrincipalCredential": {
+						"value": "[parameters('AzureDataLakeStorage_servicePrincipalCredential')]"
+					},
+					"AzureBlobStorage_servicePrincipalKey": {
+						"value": "[parameters('AzureBlobStorage_servicePrincipalKey')]"
+					},
+					"Office365_properties_typeProperties_servicePrincipalId": {
+						"value": "[parameters('Office365_properties_typeProperties_servicePrincipalId')]"
+					},
+					"AzureDataLakeStorage_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage_properties_typeProperties_url')]"
+					},
+					"AzureDataLakeStorage_properties_typeProperties_tenant": {
+						"value": "[parameters('AzureDataLakeStorage_properties_typeProperties_tenant')]"
+					},
+					"AzureDataLakeStorage_properties_typeProperties_servicePrincipalId": {
+						"value": "[parameters('AzureDataLakeStorage_properties_typeProperties_servicePrincipalId')]"
+					},
+					"AzureBlobStorage_properties_typeProperties_serviceEndpoint": {
+						"value": "[parameters('AzureBlobStorage_properties_typeProperties_serviceEndpoint')]"
+					},
+					"AzureBlobStorage_properties_typeProperties_tenant": {
+						"value": "[parameters('AzureBlobStorage_properties_typeProperties_tenant')]"
+					},
+					"AzureBlobStorage_properties_typeProperties_servicePrincipalId": {
+						"value": "[parameters('AzureBlobStorage_properties_typeProperties_servicePrincipalId')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}

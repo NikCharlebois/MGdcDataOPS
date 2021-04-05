@@ -1,0 +1,270 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "NikADFTest"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/GetEmails')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Download Messages",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "Office365Source",
+								"dateFilterColumn": "receivedDateTime",
+								"startTime": "2021-01-01T00:00:00.000Z",
+								"endTime": "2021-12-31T00:00:00.000Z",
+								"userScopeFilterUri": "",
+								"outputColumns": [
+									{
+										"name": "receivedDateTime"
+									},
+									{
+										"name": "sentDateTime"
+									},
+									{
+										"name": "hasAttachments"
+									},
+									{
+										"name": "internetMessageId"
+									},
+									{
+										"name": "subject"
+									},
+									{
+										"name": "importance"
+									},
+									{
+										"name": "parentFolderId"
+									},
+									{
+										"name": "sender"
+									},
+									{
+										"name": "from"
+									},
+									{
+										"name": "toRecipients"
+									},
+									{
+										"name": "ccRecipients"
+									},
+									{
+										"name": "bccRecipients"
+									},
+									{
+										"name": "replyTo"
+									},
+									{
+										"name": "conversationId"
+									},
+									{
+										"name": "uniqueBody"
+									},
+									{
+										"name": "isDeliveryReceiptRequested"
+									},
+									{
+										"name": "isReadReceiptRequested"
+									},
+									{
+										"name": "isRead"
+									},
+									{
+										"name": "isDraft"
+									},
+									{
+										"name": "webLink"
+									},
+									{
+										"name": "createdDateTime"
+									},
+									{
+										"name": "lastModifiedDateTime"
+									},
+									{
+										"name": "changeKey"
+									},
+									{
+										"name": "categories"
+									},
+									{
+										"name": "id"
+									},
+									{
+										"name": "attachments"
+									},
+									{
+										"name": "inferenceClassification"
+									},
+									{
+										"name": "flag"
+									},
+									{
+										"name": "body"
+									},
+									{
+										"name": "bodyPreview"
+									},
+									{
+										"name": "internetMessageHeaders"
+									},
+									{
+										"name": "conversationIndex"
+									}
+								]
+							},
+							"sink": {
+								"type": "BinarySink",
+								"storeSettings": {
+									"type": "AzureBlobStorageWriteSettings"
+								}
+							},
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "Office365Table1",
+								"type": "DatasetReference"
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "Binary1",
+								"type": "DatasetReference"
+							}
+						]
+					}
+				],
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/Office365Table1')]",
+				"[concat(variables('factoryId'), '/datasets/Binary1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Office365Table1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "Office365",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Office365Table",
+				"schema": [],
+				"typeProperties": {
+					"tableName": "BasicDataSet_v0.Message_v1"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/Office365')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Office365')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "Office365",
+				"typeProperties": {
+					"office365TenantId": "027d8585-9664-42ed-ae2a-c9e9fddfda22",
+					"servicePrincipalTenantId": "027d8585-9664-42ed-ae2a-c9e9fddfda22",
+					"servicePrincipalId": "36a5fe5a-c72a-40b1-87fb-08d8306d10dd",
+					"servicePrincipalKey": {
+						"type": "SecureString",
+						"value": "**********"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureDataLakeStorage')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "https://nikadfmgdc.dfs.core.windows.net",
+					"tenant": "027d8585-9664-42ed-ae2a-c9e9fddfda22",
+					"servicePrincipalId": "36a5fe5a-c72a-40b1-87fb-08d8306d10dd",
+					"servicePrincipalCredentialType": "ServicePrincipalKey",
+					"servicePrincipalCredential": {
+						"type": "SecureString",
+						"value": "**********"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureBlobStorage')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobStorage",
+				"typeProperties": {
+					"serviceEndpoint": "https://nikadfmgdc.blob.core.windows.net",
+					"tenant": "027d8585-9664-42ed-ae2a-c9e9fddfda22",
+					"servicePrincipalId": "36a5fe5a-c72a-40b1-87fb-08d8306d10dd",
+					"servicePrincipalKey": {
+						"type": "SecureString",
+						"value": "**********"
+					},
+					"accountKind": "StorageV2"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Binary1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Binary",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "mgdc"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage')]"
+			]
+		}
+	]
+}
