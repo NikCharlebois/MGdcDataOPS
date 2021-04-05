@@ -1,6 +1,10 @@
 {
 	"name": "Office365Table1",
 	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Office365",
+			"type": "LinkedServiceReference"
+		},
 		"annotations": [],
 		"type": "Office365Table",
 		"schema": []
