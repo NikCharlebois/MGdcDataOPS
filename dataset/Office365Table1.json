@@ -7,6 +7,9 @@
 		},
 		"annotations": [],
 		"type": "Office365Table",
-		"schema": []
+		"schema": [],
+		"typeProperties": {
+			"tableName": "BasicDataSet_v0.Message_v1"
+		}
 	}
 }
