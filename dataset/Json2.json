@@ -1,0 +1,261 @@
+{
+	"name": "Json2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "mgdc"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"aboutMe": {
+					"type": "string"
+				},
+				"birthday": {
+					"type": "string"
+				},
+				"hireDate": {
+					"type": "string"
+				},
+				"interests": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"mySite": {
+					"type": "string"
+				},
+				"pastProjects": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"preferredName": {
+					"type": "string"
+				},
+				"responsibilities": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"schools": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"skills": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"accountEnabled": {
+					"type": "boolean"
+				},
+				"ageGroup": {
+					"type": "null"
+				},
+				"businessPhones": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"city": {
+					"type": "string"
+				},
+				"companyName": {
+					"type": "null"
+				},
+				"consentProvidedForMinor": {
+					"type": "null"
+				},
+				"country": {
+					"type": "string"
+				},
+				"createdDateTime": {
+					"type": "string"
+				},
+				"department": {
+					"type": "string"
+				},
+				"displayName": {
+					"type": "string"
+				},
+				"givenName": {
+					"type": "string"
+				},
+				"id": {
+					"type": "string"
+				},
+				"imAddresses": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"jobTitle": {
+					"type": "string"
+				},
+				"legalAgeGroupClassification": {
+					"type": "null"
+				},
+				"mail": {
+					"type": "string"
+				},
+				"mailNickname": {
+					"type": "string"
+				},
+				"mobilePhone": {
+					"type": "null"
+				},
+				"officeLocation": {
+					"type": "string"
+				},
+				"onPremisesImmutableId": {
+					"type": "null"
+				},
+				"onPremisesLastSyncDateTime": {
+					"type": "null"
+				},
+				"onPremisesSecurityIdentifier": {
+					"type": "null"
+				},
+				"onPremisesSyncEnabled": {
+					"type": "null"
+				},
+				"passwordPolicies": {
+					"type": "null"
+				},
+				"postalCode": {
+					"type": "string"
+				},
+				"preferredLanguage": {
+					"type": "string"
+				},
+				"proxyAddresses": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"state": {
+					"type": "string"
+				},
+				"streetAddress": {
+					"type": "string"
+				},
+				"surname": {
+					"type": "string"
+				},
+				"usageLocation": {
+					"type": "string"
+				},
+				"userPrincipalName": {
+					"type": "string"
+				},
+				"userType": {
+					"type": "string"
+				},
+				"assignedLicenses": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"disabledPlans": {
+								"type": "array"
+							},
+							"skuId": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"assignedPlans": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"assignedDateTime": {
+								"type": "string"
+							},
+							"capabilityStatus": {
+								"type": "string"
+							},
+							"service": {
+								"type": "string"
+							},
+							"servicePlanId": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"provisionedPlans": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"capabilityStatus": {
+								"type": "string"
+							},
+							"provisioningStatus": {
+								"type": "string"
+							},
+							"service": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"puser": {
+					"type": "string"
+				},
+				"ptenant": {
+					"type": "string"
+				},
+				"pAdditionalInfo": {
+					"type": "null"
+				},
+				"datarow": {
+					"type": "integer"
+				},
+				"userrow": {
+					"type": "integer"
+				},
+				"pagerow": {
+					"type": "integer"
+				},
+				"rowinformation": {
+					"type": "object",
+					"properties": {
+						"errorInformation": {
+							"type": "null"
+						},
+						"userReturnedNoData": {
+							"type": "boolean"
+						},
+						"isUserSummaryRow": {
+							"type": "boolean"
+						},
+						"userHasCompleteData": {
+							"type": "boolean"
+						}
+					}
+				}
+			}
+		}
+	}
+}
