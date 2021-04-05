@@ -6,46 +6,6 @@
 			"type": "string",
 			"metadata": "Data Factory name",
 			"defaultValue": "NikADFTest"
-		},
-		"AzureBlobStorage_servicePrincipalKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'servicePrincipalKey' of 'AzureBlobStorage'"
-		},
-		"AzureDataLakeStorage_servicePrincipalCredential": {
-			"type": "secureString",
-			"metadata": "Secure string for 'servicePrincipalCredential' of 'AzureDataLakeStorage'"
-		},
-		"Office365_servicePrincipalKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'servicePrincipalKey' of 'Office365'"
-		},
-		"AzureBlobStorage_properties_typeProperties_serviceEndpoint": {
-			"type": "string",
-			"defaultValue": "https://nikadfmgdc.blob.core.windows.net"
-		},
-		"AzureBlobStorage_properties_typeProperties_tenant": {
-			"type": "string",
-			"defaultValue": "027d8585-9664-42ed-ae2a-c9e9fddfda22"
-		},
-		"AzureBlobStorage_properties_typeProperties_servicePrincipalId": {
-			"type": "string",
-			"defaultValue": "36a5fe5a-c72a-40b1-87fb-08d8306d10dd"
-		},
-		"AzureDataLakeStorage_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://nikadfmgdc.dfs.core.windows.net"
-		},
-		"AzureDataLakeStorage_properties_typeProperties_tenant": {
-			"type": "string",
-			"defaultValue": "027d8585-9664-42ed-ae2a-c9e9fddfda22"
-		},
-		"AzureDataLakeStorage_properties_typeProperties_servicePrincipalId": {
-			"type": "string",
-			"defaultValue": "36a5fe5a-c72a-40b1-87fb-08d8306d10dd"
-		},
-		"Office365_properties_typeProperties_servicePrincipalId": {
-			"type": "string",
-			"defaultValue": "36a5fe5a-c72a-40b1-87fb-08d8306d10dd"
 		}
 	},
 	"variables": {
@@ -187,15 +147,13 @@
 						"inputs": [
 							{
 								"referenceName": "Office365Table1",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "Binary1",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						]
 					},
@@ -367,15 +325,13 @@
 						"inputs": [
 							{
 								"referenceName": "Office365Users",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "Binary1",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						]
 					},
@@ -407,15 +363,8 @@
 						"typeProperties": {
 							"dataflow": {
 								"referenceName": "MergeData",
-								"type": "DataFlowReference",
-								"parameters": {},
-								"datasetParameters": {
-									"Messages": {},
-									"Users": {},
-									"MyResult": {}
-								}
+								"type": "DataFlowReference"
 							},
-							"staging": {},
 							"compute": {
 								"coreCount": 8,
 								"computeType": "General"
@@ -1062,12 +1011,12 @@
 				"annotations": [],
 				"type": "AzureBlobStorage",
 				"typeProperties": {
-					"serviceEndpoint": "[parameters('AzureBlobStorage_properties_typeProperties_serviceEndpoint')]",
-					"tenant": "[parameters('AzureBlobStorage_properties_typeProperties_tenant')]",
-					"servicePrincipalId": "[parameters('AzureBlobStorage_properties_typeProperties_servicePrincipalId')]",
+					"serviceEndpoint": "https://nikadfmgdc.blob.core.windows.net",
+					"tenant": "027d8585-9664-42ed-ae2a-c9e9fddfda22",
+					"servicePrincipalId": "36a5fe5a-c72a-40b1-87fb-08d8306d10dd",
 					"servicePrincipalKey": {
 						"type": "SecureString",
-						"value": "[parameters('AzureBlobStorage_servicePrincipalKey')]"
+						"value": "**********"
 					},
 					"accountKind": "StorageV2"
 				},
@@ -1076,9 +1025,7 @@
 					"type": "IntegrationRuntimeReference"
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/integrationRuntimes/Azure')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/AzureDataLakeStorage')]",
@@ -1088,13 +1035,13 @@
 				"annotations": [],
 				"type": "AzureBlobFS",
 				"typeProperties": {
-					"url": "[parameters('AzureDataLakeStorage_properties_typeProperties_url')]",
-					"tenant": "[parameters('AzureDataLakeStorage_properties_typeProperties_tenant')]",
-					"servicePrincipalId": "[parameters('AzureDataLakeStorage_properties_typeProperties_servicePrincipalId')]",
+					"url": "https://nikadfmgdc.dfs.core.windows.net",
+					"tenant": "027d8585-9664-42ed-ae2a-c9e9fddfda22",
+					"servicePrincipalId": "36a5fe5a-c72a-40b1-87fb-08d8306d10dd",
 					"servicePrincipalCredentialType": "ServicePrincipalKey",
 					"servicePrincipalCredential": {
 						"type": "SecureString",
-						"value": "[parameters('AzureDataLakeStorage_servicePrincipalCredential')]"
+						"value": "**********"
 					}
 				}
 			},
@@ -1110,10 +1057,10 @@
 				"typeProperties": {
 					"office365TenantId": "027d8585-9664-42ed-ae2a-c9e9fddfda22",
 					"servicePrincipalTenantId": "027d8585-9664-42ed-ae2a-c9e9fddfda22",
-					"servicePrincipalId": "[parameters('Office365_properties_typeProperties_servicePrincipalId')]",
+					"servicePrincipalId": "36a5fe5a-c72a-40b1-87fb-08d8306d10dd",
 					"servicePrincipalKey": {
 						"type": "SecureString",
-						"value": "[parameters('Office365_servicePrincipalKey')]"
+						"value": "**********"
 					}
 				},
 				"connectVia": {
@@ -1121,9 +1068,7 @@
 					"type": "IntegrationRuntimeReference"
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/integrationRuntimes/Azure')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/MergeData')]",
@@ -1170,25 +1115,6 @@
 				"[concat(variables('factoryId'), '/datasets/Json2')]",
 				"[concat(variables('factoryId'), '/datasets/Json3')]"
 			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Azure')]",
-			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"type": "Managed",
-				"typeProperties": {
-					"computeProperties": {
-						"location": "East US 2",
-						"dataFlowProperties": {
-							"computeType": "General",
-							"coreCount": 8,
-							"timeToLive": 10
-						}
-					}
-				}
-			},
-			"dependsOn": []
 		}
 	]
 }
