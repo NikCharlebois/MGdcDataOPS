@@ -136,7 +136,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "Binary1",
+						"referenceName": "BlobStorage",
 						"type": "DatasetReference"
 					}
 				]
@@ -314,7 +314,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "Binary1",
+						"referenceName": "BlobStorage",
 						"type": "DatasetReference"
 					}
 				]
