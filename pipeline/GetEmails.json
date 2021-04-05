@@ -136,7 +136,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "BlobStorage",
+						"referenceName": "AzureBlobStorage",
 						"type": "DatasetReference"
 					}
 				]
@@ -314,7 +314,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "BlobStorage",
+						"referenceName": "AzureBlobStorage",
 						"type": "DatasetReference"
 					}
 				]

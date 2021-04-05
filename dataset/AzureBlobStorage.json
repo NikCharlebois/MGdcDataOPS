@@ -1,18 +1,17 @@
 {
-	"name": "Json3",
+	"name": "AzureBlobStorage",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureBlobStorageService",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
-		"type": "Json",
+		"type": "Binary",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
 				"container": "mgdc"
 			}
-		},
-		"schema": {}
+		}
 	}
 }
