@@ -7,39 +7,23 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "NikADFTest"
 		},
-		"AzureBlobStorage_servicePrincipalKey": {
+		"AzureBlobStorageService_servicePrincipalKey": {
 			"type": "secureString",
-			"metadata": "Secure string for 'servicePrincipalKey' of 'AzureBlobStorage'"
-		},
-		"AzureDataLakeStorage_servicePrincipalCredential": {
-			"type": "secureString",
-			"metadata": "Secure string for 'servicePrincipalCredential' of 'AzureDataLakeStorage'"
+			"metadata": "Secure string for 'servicePrincipalKey' of 'AzureBlobStorageService'"
 		},
 		"Office365_servicePrincipalKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'servicePrincipalKey' of 'Office365'"
 		},
-		"AzureBlobStorage_properties_typeProperties_serviceEndpoint": {
+		"AzureBlobStorageService_properties_typeProperties_serviceEndpoint": {
 			"type": "string",
 			"defaultValue": "https://nikadfmgdc.blob.core.windows.net"
 		},
-		"AzureBlobStorage_properties_typeProperties_tenant": {
+		"AzureBlobStorageService_properties_typeProperties_tenant": {
 			"type": "string",
 			"defaultValue": "027d8585-9664-42ed-ae2a-c9e9fddfda22"
 		},
-		"AzureBlobStorage_properties_typeProperties_servicePrincipalId": {
-			"type": "string",
-			"defaultValue": "36a5fe5a-c72a-40b1-87fb-08d8306d10dd"
-		},
-		"AzureDataLakeStorage_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://nikadfmgdc.dfs.core.windows.net"
-		},
-		"AzureDataLakeStorage_properties_typeProperties_tenant": {
-			"type": "string",
-			"defaultValue": "027d8585-9664-42ed-ae2a-c9e9fddfda22"
-		},
-		"AzureDataLakeStorage_properties_typeProperties_servicePrincipalId": {
+		"AzureBlobStorageService_properties_typeProperties_servicePrincipalId": {
 			"type": "string",
 			"defaultValue": "36a5fe5a-c72a-40b1-87fb-08d8306d10dd"
 		},
@@ -74,32 +58,20 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
-					"AzureDataLakeStorage_servicePrincipalCredential": {
-						"value": "[parameters('AzureDataLakeStorage_servicePrincipalCredential')]"
-					},
-					"AzureBlobStorage_servicePrincipalKey": {
-						"value": "[parameters('AzureBlobStorage_servicePrincipalKey')]"
+					"AzureBlobStorageService_servicePrincipalKey": {
+						"value": "[parameters('AzureBlobStorageService_servicePrincipalKey')]"
 					},
 					"Office365_servicePrincipalKey": {
 						"value": "[parameters('Office365_servicePrincipalKey')]"
 					},
-					"AzureDataLakeStorage_properties_typeProperties_url": {
-						"value": "[parameters('AzureDataLakeStorage_properties_typeProperties_url')]"
+					"AzureBlobStorageService_properties_typeProperties_serviceEndpoint": {
+						"value": "[parameters('AzureBlobStorageService_properties_typeProperties_serviceEndpoint')]"
 					},
-					"AzureDataLakeStorage_properties_typeProperties_tenant": {
-						"value": "[parameters('AzureDataLakeStorage_properties_typeProperties_tenant')]"
+					"AzureBlobStorageService_properties_typeProperties_tenant": {
+						"value": "[parameters('AzureBlobStorageService_properties_typeProperties_tenant')]"
 					},
-					"AzureDataLakeStorage_properties_typeProperties_servicePrincipalId": {
-						"value": "[parameters('AzureDataLakeStorage_properties_typeProperties_servicePrincipalId')]"
-					},
-					"AzureBlobStorage_properties_typeProperties_serviceEndpoint": {
-						"value": "[parameters('AzureBlobStorage_properties_typeProperties_serviceEndpoint')]"
-					},
-					"AzureBlobStorage_properties_typeProperties_tenant": {
-						"value": "[parameters('AzureBlobStorage_properties_typeProperties_tenant')]"
-					},
-					"AzureBlobStorage_properties_typeProperties_servicePrincipalId": {
-						"value": "[parameters('AzureBlobStorage_properties_typeProperties_servicePrincipalId')]"
+					"AzureBlobStorageService_properties_typeProperties_servicePrincipalId": {
+						"value": "[parameters('AzureBlobStorageService_properties_typeProperties_servicePrincipalId')]"
 					},
 					"Office365_properties_typeProperties_servicePrincipalId": {
 						"value": "[parameters('Office365_properties_typeProperties_servicePrincipalId')]"

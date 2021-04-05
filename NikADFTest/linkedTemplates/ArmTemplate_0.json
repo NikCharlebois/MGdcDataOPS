@@ -7,39 +7,23 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "NikADFTest"
 		},
-		"AzureDataLakeStorage_servicePrincipalCredential": {
+		"AzureBlobStorageService_servicePrincipalKey": {
 			"type": "secureString",
-			"metadata": "Secure string for 'servicePrincipalCredential' of 'AzureDataLakeStorage'"
-		},
-		"AzureBlobStorage_servicePrincipalKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'servicePrincipalKey' of 'AzureBlobStorage'"
+			"metadata": "Secure string for 'servicePrincipalKey' of 'AzureBlobStorageService'"
 		},
 		"Office365_servicePrincipalKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'servicePrincipalKey' of 'Office365'"
 		},
-		"AzureDataLakeStorage_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://nikadfmgdc.dfs.core.windows.net"
-		},
-		"AzureDataLakeStorage_properties_typeProperties_tenant": {
-			"type": "string",
-			"defaultValue": "027d8585-9664-42ed-ae2a-c9e9fddfda22"
-		},
-		"AzureDataLakeStorage_properties_typeProperties_servicePrincipalId": {
-			"type": "string",
-			"defaultValue": "36a5fe5a-c72a-40b1-87fb-08d8306d10dd"
-		},
-		"AzureBlobStorage_properties_typeProperties_serviceEndpoint": {
+		"AzureBlobStorageService_properties_typeProperties_serviceEndpoint": {
 			"type": "string",
 			"defaultValue": "https://nikadfmgdc.blob.core.windows.net"
 		},
-		"AzureBlobStorage_properties_typeProperties_tenant": {
+		"AzureBlobStorageService_properties_typeProperties_tenant": {
 			"type": "string",
 			"defaultValue": "027d8585-9664-42ed-ae2a-c9e9fddfda22"
 		},
-		"AzureBlobStorage_properties_typeProperties_servicePrincipalId": {
+		"AzureBlobStorageService_properties_typeProperties_servicePrincipalId": {
 			"type": "string",
 			"defaultValue": "36a5fe5a-c72a-40b1-87fb-08d8306d10dd"
 		},
@@ -52,26 +36,6 @@
 		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
 	},
 	"resources": [
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureDataLakeStorage')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobFS",
-				"typeProperties": {
-					"url": "[parameters('AzureDataLakeStorage_properties_typeProperties_url')]",
-					"tenant": "[parameters('AzureDataLakeStorage_properties_typeProperties_tenant')]",
-					"servicePrincipalId": "[parameters('AzureDataLakeStorage_properties_typeProperties_servicePrincipalId')]",
-					"servicePrincipalCredentialType": "ServicePrincipalKey",
-					"servicePrincipalCredential": {
-						"type": "SecureString",
-						"value": "[parameters('AzureDataLakeStorage_servicePrincipalCredential')]"
-					}
-				}
-			},
-			"dependsOn": []
-		},
 		{
 			"name": "[concat(parameters('factoryName'), '/Azure')]",
 			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
@@ -92,19 +56,19 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/AzureBlobStorage')]",
+			"name": "[concat(parameters('factoryName'), '/AzureBlobStorageService')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"annotations": [],
 				"type": "AzureBlobStorage",
 				"typeProperties": {
-					"serviceEndpoint": "[parameters('AzureBlobStorage_properties_typeProperties_serviceEndpoint')]",
-					"tenant": "[parameters('AzureBlobStorage_properties_typeProperties_tenant')]",
-					"servicePrincipalId": "[parameters('AzureBlobStorage_properties_typeProperties_servicePrincipalId')]",
+					"serviceEndpoint": "[parameters('AzureBlobStorageService_properties_typeProperties_serviceEndpoint')]",
+					"tenant": "[parameters('AzureBlobStorageService_properties_typeProperties_tenant')]",
+					"servicePrincipalId": "[parameters('AzureBlobStorageService_properties_typeProperties_servicePrincipalId')]",
 					"servicePrincipalKey": {
 						"type": "SecureString",
-						"value": "[parameters('AzureBlobStorage_servicePrincipalKey')]"
+						"value": "[parameters('AzureBlobStorageService_servicePrincipalKey')]"
 					},
 					"accountKind": "StorageV2"
 				},
@@ -143,12 +107,12 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/BlobStorage')]",
+			"name": "[concat(parameters('factoryName'), '/AzureBlobStorage')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"linkedServiceName": {
-					"referenceName": "AzureBlobStorage",
+					"referenceName": "AzureBlobStorageService",
 					"type": "LinkedServiceReference"
 				},
 				"annotations": [],
@@ -161,7 +125,7 @@
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage')]"
+				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorageService')]"
 			]
 		},
 		{
@@ -170,7 +134,7 @@
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"linkedServiceName": {
-					"referenceName": "AzureBlobStorage",
+					"referenceName": "AzureBlobStorageService",
 					"type": "LinkedServiceReference"
 				},
 				"annotations": [],
@@ -431,7 +395,7 @@
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage')]"
+				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorageService')]"
 			]
 		},
 		{
@@ -440,7 +404,7 @@
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"linkedServiceName": {
-					"referenceName": "AzureBlobStorage",
+					"referenceName": "AzureBlobStorageService",
 					"type": "LinkedServiceReference"
 				},
 				"annotations": [],
@@ -697,7 +661,7 @@
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage')]"
+				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorageService')]"
 			]
 		},
 		{
@@ -706,7 +670,7 @@
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"linkedServiceName": {
-					"referenceName": "AzureBlobStorage",
+					"referenceName": "AzureBlobStorageService",
 					"type": "LinkedServiceReference"
 				},
 				"annotations": [],
@@ -720,7 +684,7 @@
 				"schema": {}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage')]"
+				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorageService')]"
 			]
 		},
 		{
@@ -950,7 +914,7 @@
 						],
 						"outputs": [
 							{
-								"referenceName": "BlobStorage",
+								"referenceName": "AzureBlobStorage",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
@@ -1130,7 +1094,7 @@
 						],
 						"outputs": [
 							{
-								"referenceName": "BlobStorage",
+								"referenceName": "AzureBlobStorage",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
@@ -1185,7 +1149,7 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/Office365Table1')]",
-				"[concat(variables('factoryId'), '/datasets/BlobStorage')]",
+				"[concat(variables('factoryId'), '/datasets/AzureBlobStorage')]",
 				"[concat(variables('factoryId'), '/datasets/Office365Users')]",
 				"[concat(variables('factoryId'), '/dataflows/MergeData')]"
 			]

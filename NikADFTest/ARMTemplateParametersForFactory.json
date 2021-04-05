@@ -5,31 +5,19 @@
 		"factoryName": {
 			"value": "NikADFTest"
 		},
-		"AzureBlobStorage_servicePrincipalKey": {
-			"value": ""
-		},
-		"AzureDataLakeStorage_servicePrincipalCredential": {
+		"AzureBlobStorageService_servicePrincipalKey": {
 			"value": ""
 		},
 		"Office365_servicePrincipalKey": {
 			"value": ""
 		},
-		"AzureBlobStorage_properties_typeProperties_serviceEndpoint": {
+		"AzureBlobStorageService_properties_typeProperties_serviceEndpoint": {
 			"value": "https://nikadfmgdc.blob.core.windows.net"
 		},
-		"AzureBlobStorage_properties_typeProperties_tenant": {
+		"AzureBlobStorageService_properties_typeProperties_tenant": {
 			"value": "027d8585-9664-42ed-ae2a-c9e9fddfda22"
 		},
-		"AzureBlobStorage_properties_typeProperties_servicePrincipalId": {
-			"value": "36a5fe5a-c72a-40b1-87fb-08d8306d10dd"
-		},
-		"AzureDataLakeStorage_properties_typeProperties_url": {
-			"value": "https://nikadfmgdc.dfs.core.windows.net"
-		},
-		"AzureDataLakeStorage_properties_typeProperties_tenant": {
-			"value": "027d8585-9664-42ed-ae2a-c9e9fddfda22"
-		},
-		"AzureDataLakeStorage_properties_typeProperties_servicePrincipalId": {
+		"AzureBlobStorageService_properties_typeProperties_servicePrincipalId": {
 			"value": "36a5fe5a-c72a-40b1-87fb-08d8306d10dd"
 		},
 		"Office365_properties_typeProperties_servicePrincipalId": {
