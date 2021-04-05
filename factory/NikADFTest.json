@@ -1,0 +1,9 @@
+{
+	"name": "NikADFTest",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "7ccad515-92b0-4fcb-9f8b-265d01a9bca3",
+		"tenantId": "027d8585-9664-42ed-ae2a-c9e9fddfda22"
+	}
+}
